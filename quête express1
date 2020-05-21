@@ -1,0 +1,78 @@
+
+
+
+//Une route répondant à l'url /api/movies qui envoie comme informations une chaîne de caractères contenant "Récupération de tous les films"
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/api/movies', (request, response) => {
+  response.send('Récupération de tous les films');
+});
+
+app.listen(port, (err) => {
+  if (err) {
+    throw new Error('Something bad happened...');
+  }
+
+  console.log(`Server is listening on ${port}`);
+});
+
+//Une route répondant à l'url /api/movies/<id du film> qui envoie comme information un objet JSON contenant {id: <id du film>}
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/api/movies/:idfilm', (request, response) => {
+  response.json({id : `${idfilm}`});
+});
+
+app.listen(port, (err) => {
+  if (err) {
+    throw new Error('Something bad happened...');
+  }
+
+  console.log(`Server is listening on ${port}`);
+});
+
+
+//Une route répondant à l'url /api/employee?name=<nom de l'employé> qui envoie un statut 404 avec comme information une chaîne de caractère contenant "Impossible de récupérer l'employé <nom de l'employé>". Attention, le "path" de ta route doit être juste /api/employee. Le nom de l'employé doit être récupéré depuis l'objet req.query.
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/api/employee', (request, response) => {
+  const name = request.query.name
+  response.status(404).send('Impossible de récupérer lemployé ${name}');
+});
+
+app.listen(port, (err) => {
+  if (err) {
+    throw new Error('Something bad happened...');
+  }
+
+  console.log(`Server is listening on ${port}`);
+});
+
+
+
+//Optionnellement, une route répondant à l'url /api/employee/, renvoyant un statut 304, sans contenu.
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/api/employee/', (request, response) => {
+  response.sendStatus(304);
+});
+
+app.listen(port, (err) => {
+  if (err) {
+    throw new Error('Something bad happened...');
+  }
+
+  console.log(`Server is listening on ${port}`);
+});
