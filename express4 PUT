@@ -20,7 +20,7 @@ app.put('/api/movies/:id', (req, res) => {
   const formData = req.body;
 
   // connection à la base de données, et insertion  du film
-  connection.query('UPDATE employee SET ? WHERE id = ?', [formData, idMovie], err => {
+  connection.query('UPDATE movie SET ? WHERE id = ?', [formData, idMovie], err => {
 
     if (err) {
       // Si une erreur est survenue, alors on informe l'utilisateur de l'erreur
